@@ -20,4 +20,10 @@ export class BasePage {
       dialog.accept();
     });
   }
+
+  async scrollDownPage(): Promise<void> {
+    await this.page.evaluate(() => {
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  }
 }

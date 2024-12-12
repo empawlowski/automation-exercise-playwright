@@ -1,35 +1,31 @@
 import { type Locator, type Page, expect } from '@playwright/test';
-import { homeData } from '../assets/data/e2e/home.data';
 import { BasePage } from './base.page';
 import { LeftSidebarComponent } from '../components/left-sidebar.component';
 import { CategoryProductsPage } from './category-products.page';
 import { urlTitleData } from '../assets/data/e2e/url-title.data';
 import { categoryProductsData } from '../assets/data/e2e/category-products.data';
+import { CartPage } from './cart.page';
+import { FooterComponent } from '../components/footer.component';
 
 export class HomePage extends BasePage {
-  readonly hTestCase: Locator;
-  readonly hAllProducts: Locator;
-
   readonly brandPolo: Locator;
   readonly brandMastHarbour: Locator;
 
   readonly hBrandMastHarbour: Locator;
   readonly hBrandPolo: Locator;
 
-  readonly hRecommendedItems: Locator;
+  readonly headerRecommendedItems: Locator;
 
-  readonly bAddToCartFromRecommendedItems: Locator;
-  readonly viewCart: Locator;
+  readonly linkAddToCartFromRecommendedItems: Locator;
+  readonly linkViewCart: Locator;
 
   readonly leftSidebar: LeftSidebarComponent;
   readonly categoryProducts: CategoryProductsPage;
+  readonly footer: FooterComponent;
 
   constructor(page: Page) {
     super(page);
-    //* POM for open page and expect page (#openPage) (#expectPage) (#expectLoginPage) (#expectProductsPage) (#expectTestCasePage)
-    this.hTestCase = page.getByRole('heading', { name: 'Test Cases', exact: true });
-    this.hAllProducts = page.getByRole('heading', { name: 'All Products', exact: true });
-
+    //* POM for open page and expect page
     this.brandPolo = page.locator('[href*="/brand_products/Polo"]', { hasText: 'Polo' });
     this.brandMastHarbour = page.locator('[href*="/brand_products/Mast & Harbour"]', { hasText: 'Mast & Harbour' });
 
@@ -38,15 +34,13 @@ export class HomePage extends BasePage {
 
     //* POM for Recommended items - page bottom ()
     //Test Case 22: Add to cart from Recommended items
-    this.hRecommendedItems = page.getByRole('heading', { name: homeData.hRecommendedItems });
-    // bAddToCartFromRecommendedItems = page
-    //   .locator('#recommended-item-carousel')
-    //   .locator('.item active > .product-image-wrapper > .single-products > .productinfo > .btn');
-    this.bAddToCartFromRecommendedItems = page.locator('div:nth-child(2) > div > .product-image-wrapper > .single-products > .productinfo > .btn');
-    this.viewCart = page.getByRole('link', { name: 'View Cart' });
+    this.headerRecommendedItems = page.getByRole('heading', { name: 'Recommended items' });
+    this.linkAddToCartFromRecommendedItems = page.locator('#recommended-item-carousel').locator('.add-to-cart');
+    this.linkViewCart = page.getByRole('link', { name: 'View Cart' });
 
     this.leftSidebar = new LeftSidebarComponent(page);
     this.categoryProducts = new CategoryProductsPage(page);
+    this.footer = new FooterComponent(page);
   }
 
   async expectHomePage(): Promise<void> {
@@ -54,55 +48,39 @@ export class HomePage extends BasePage {
     await expect(this.page).toHaveTitle(urlTitleData.home);
   }
 
-  async expectCartPage(): Promise<void> {
-    await expect(this.page).toHaveURL('/view_cart');
-    await expect(this.page).toHaveTitle(urlTitleData.cart);
-  }
-
-  async expectProductsPage(): Promise<void> {
-    await expect(this.page).toHaveURL('/products');
-    await expect(this.page).toHaveTitle(urlTitleData.products);
-    await expect(this.hAllProducts).toBeVisible();
-  }
-
-  async expectFirstProductsPage(): Promise<void> {
-    await expect(this.page).toHaveURL('/product_details/1');
-    await expect(this.page).toHaveTitle(urlTitleData.productDetails);
-  }
-
+  //TODO:
   async expectBrandPolo(): Promise<void> {
     await expect(this.page).toHaveURL('/brand_products/Polo');
     await expect(this.page).toHaveTitle(urlTitleData.brandPolo);
     await expect(this.hBrandPolo).toBeVisible();
   }
 
+  //TODO:
   async expectBrandMastHarbourPage(): Promise<void> {
     await expect(this.page).toHaveURL('/brand_products/Mast & Harbour');
     await expect(this.page).toHaveTitle(urlTitleData.brandMastHarbour);
     await expect(this.hBrandMastHarbour).toBeVisible();
   }
 
-  async expectTestCasePage(): Promise<void> {
-    await expect(this.page).toHaveURL('/test_cases');
-    await expect(this.page).toHaveTitle(urlTitleData.testCase);
-    await expect(this.hTestCase).toBeVisible();
-  }
-
+  //TODO:
   async openBrandMastHarbour(): Promise<void> {
     await this.brandMastHarbour.click();
     await this.expectBrandMastHarbourPage();
   }
 
+  //TODO:
   async openBrandPolo(): Promise<void> {
     await this.brandPolo.click();
     await this.expectBrandPolo();
   }
-  async addFromRecommendedItems(): Promise<void> {
-    await expect(this.hRecommendedItems).toBeVisible();
-    await this.bAddToCartFromRecommendedItems.first().click();
-    await this.viewCart.click();
+
+  async addFromRecommendedItemsAndViewCart(): Promise<CartPage> {
+    await this.linkAddToCartFromRecommendedItems.last().click();
+    await this.linkViewCart.click();
+    return new CartPage(this.page);
   }
 
+  //TODO:
   async scrollUpConfirmByScreen() {
     await this.page.evaluate(() => {
       window.scrollTo(0, document.body.scrollHeight);
@@ -113,6 +91,7 @@ export class HomePage extends BasePage {
     await this.page.screenshot({ path: './test-download/e2e/home/hAutomationExercise.png' });
   }
 
+  //TODO:
   async noScrollUpConfirmByScreen() {
     await this.page.evaluate(() => {
       window.scrollTo(0, document.body.scrollHeight);

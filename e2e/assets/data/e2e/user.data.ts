@@ -1,7 +1,9 @@
 export const userData = {
-  fakeUsername: 'fakeName',
-  fakeEmail: 'fake@email.pw',
-  fakePassword: 'fake!Password00',
+  fakeUsername: 'fakeName', //? .env
+  fakeAPIname: 'fakeAPIname', //? .env
+  fakeEmail: 'fake@email.pw', //? .env
+  fakeAPIemail: 'fake-api@email.pw', //? .env
+  fakePassword: 'fake!Password00', //? .env
   fakeExistUsername: 'fakeExistUsername',
   fakeExistEmail: 'fakeexistemail@email.pw',
   incorrectEmail: 'f3k4@email.pw',
@@ -11,5 +13,5 @@ export const userData = {
   days: '23',
   months: '5',
   years: '1988',
-  country: 'Australia', //? factory
+  // country: 'Australia', //? factory
 };

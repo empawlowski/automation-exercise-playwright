@@ -1,6 +1,7 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 import { BasePage } from './base.page';
 import { contactUsData } from '../assets/data/e2e/contact-us.data';
+import { ContactUsModel } from '../models/contact-us.model';
 
 export class ContactUsPage extends BasePage {
   readonly header: Locator;
@@ -26,11 +27,11 @@ export class ContactUsPage extends BasePage {
     this.buttonBackHome = page.locator('.btn-success');
   }
 
-  async fillContactUs(name: string, email: string, subject: string, message: string): Promise<void> {
-    await this.fieldName.fill(name);
-    await this.fieldEmail.fill(email);
-    await this.fieldSubject.fill(subject);
-    await this.fieldMessage.fill(message);
+  async fillContactUs(form: ContactUsModel): Promise<void> {
+    await this.fieldName.fill(form.name);
+    await this.fieldEmail.fill(form.email);
+    await this.fieldSubject.fill(form.subject);
+    await this.fieldMessage.fill(form.message);
     await this.fieldFileUpload.setInputFiles('./e2e/assets/images/image.jpg');
     await this.buttonSubmit.click();
   }

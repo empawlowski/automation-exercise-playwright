@@ -4,6 +4,7 @@ import { UserSignupModel } from '../models/login.model';
 import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '../models/signup.model';
 import { DeleteAccountPage } from './delete-account.page';
 import { AccountCreatedPage } from './account-created.page';
+import { LoginPage } from './login.page';
 
 export class SignupPage extends BasePage {
   readonly checkboxGenderMr: Locator;
@@ -31,13 +32,11 @@ export class SignupPage extends BasePage {
   readonly fieldMobileNumber: Locator;
 
   readonly buttonCreateAccount: Locator;
-  //   readonly headerAccountCreated: Locator;
   readonly buttonContinue: Locator;
-
-  readonly headerAccountDeleted: Locator;
 
   readonly create: AccountCreatedPage;
   readonly delete: DeleteAccountPage;
+  readonly login: LoginPage;
 
   constructor(page: Page) {
     super(page);
@@ -66,12 +65,11 @@ export class SignupPage extends BasePage {
     this.fieldMobileNumber = this.page.getByTestId('mobile_number');
 
     this.buttonCreateAccount = this.page.getByTestId('create-account');
-    // this.headerAccountCreated = this.page.getByTestId('account-created');
     this.buttonContinue = this.page.getByTestId('continue-button');
 
-    // this.headerAccountDeleted = this.page.getByTestId('account-deleted');
     this.create = new AccountCreatedPage(page);
     this.delete = new DeleteAccountPage(page);
+    this.login = new LoginPage(page);
   }
 
   async expectAccountInformation(user: UserSignupModel): Promise<void> {
@@ -108,11 +106,18 @@ export class SignupPage extends BasePage {
   async clickCreateAccount(): Promise<AccountCreatedPage> {
     await this.buttonCreateAccount.click();
     return new AccountCreatedPage(this.page);
-    // account_created
   }
 
-  //   async clickContinue(): Promise<void> {
-  //     await this.buttonContinue.click();
-  //     //? new page 'account_create'
-  //   }
+  async registerUser(
+    userBaseData: UserSignupModel,
+    userBasicInfoData: UserSignupBasicInfoModel,
+    userAddressInfoData: UserSignupAddressInfoModel,
+  ): Promise<void> {
+    await this.login.fillUserSignup(userBaseData);
+    await this.expectAccountInformation(userBaseData);
+    await this.expectAccountInformation(userBaseData);
+    await this.fillBasicInformation(userBasicInfoData);
+    await this.fillAddressInformation(userAddressInfoData);
+    await this.clickCreateAccount();
+  }
 }

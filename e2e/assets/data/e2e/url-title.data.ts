@@ -10,6 +10,10 @@ export const urlTitleData = {
   login: 'Automation Exercise - Signup / Login',
   testCase: 'Automation Practice Website for UI Testing - Test Cases',
 
-  urlWomenDress: '/category_products/1',
-  urlMenJeans: '/category_products/6',
+  urlProducts: '/products',
+  urlCart: '/view_cart',
+  urlTestCases: '/test_cases',
+  urlProductDetails: '/product_details/1', //? regExp?
+  urlWomenDress: '/category_products/1', //? regExp?
+  urlMenJeans: '/category_products/6', //? regExp?
 };

@@ -1,6 +1,4 @@
 export const productData = {
-  searchProduct: 'Top',
-
   firstProduct: 'Blue Top',
   secondProduct: 'Men Tshirt',
 

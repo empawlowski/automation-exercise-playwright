@@ -3,12 +3,30 @@ import { HomePage } from './home.page';
 import { ProductsPage } from './product.page';
 import { BasePage } from './base.page';
 import { HeaderComponent } from '../components/header.component';
+import { FooterComponent } from '../components/footer.component';
+import { productData } from '../assets/data/e2e/product.data';
+import { urlTitleData } from '../assets/data/e2e/url-title.data';
 
 export class CartPage extends BasePage {
   private readonly homePage: HomePage;
   private readonly headerComponent: HeaderComponent;
+
+  readonly cart: CartPage;
+
+  readonly footer: FooterComponent;
+
   readonly product: ProductsPage;
   readonly addressDelivery: Locator;
+
+  //?
+  readonly rowForProduct: Locator;
+  readonly cartPriceP1: Locator;
+  readonly cartQuantityP1: Locator;
+  readonly cartTotalPriceP1: Locator;
+  readonly cartPriceP2: Locator;
+  readonly cartQuantityP2: Locator;
+  readonly cartTotalPriceP2: Locator;
+  //?
 
   readonly addressInvoice: Locator;
   readonly fieldDescription: Locator;
@@ -34,7 +52,21 @@ export class CartPage extends BasePage {
   constructor(page: Page) {
     super(page);
     this.homePage = new HomePage(page);
+    this.cart = new CartPage(page);
     this.product = new ProductsPage(page);
+
+    this.footer = new FooterComponent(page);
+
+    this.rowForProduct = this.page.locator('#cart_info_table').getByRole('row', { name: 'Product Image' });
+
+    //TODO:
+    this.cartPriceP1 = this.page.locator('#product-1').locator('.cart_price');
+    this.cartQuantityP1 = this.page.locator('#product-1').locator('.cart_quantity');
+    this.cartTotalPriceP1 = this.page.locator('#product-1').locator('.cart_total_price');
+    this.cartPriceP2 = this.page.locator('#product-2').locator('.cart_price');
+    this.cartQuantityP2 = this.page.locator('#product-2').locator('.cart_quantity');
+    this.cartTotalPriceP2 = this.page.locator('#product-2').locator('.cart_total_price');
+    //TODO:
 
     //Test Case 14: Place Order: Register while Checkout
     this.addressDelivery = page.locator('#address_delivery');
@@ -61,15 +93,30 @@ export class CartPage extends BasePage {
     this.buttonContinue = page.locator('.btn-primary');
   }
 
+  async expectCartPage(): Promise<void> {
+    await expect(this.page).toHaveURL(urlTitleData.urlCart);
+    await expect(this.page).toHaveTitle(urlTitleData.cart);
+  }
+
+  //TODO: clear method
+  async expectAddProducts() {
+    await expect(this.cartPriceP1).toHaveText(productData.cartPriceP1);
+    await expect(this.cartQuantityP1).toHaveText(productData.cartQuantity);
+    await expect(this.cartTotalPriceP1).toHaveText(productData.cartPriceP1);
+    await expect(this.cartPriceP2).toHaveText(productData.cartPriceP2);
+    await expect(this.cartQuantityP2).toHaveText(productData.cartQuantity);
+    await expect(this.cartTotalPriceP2).toHaveText(productData.cartPriceP2);
+  }
+
   async checkoutFromCartPage(): Promise<void> {
-    await this.homePage.expectCartPage();
+    await this.cart.expectCartPage();
     await this.buttonProceedToCheckout.click();
     await this.buttonRegisterLogin.click();
   }
 
   async proceedToCheckout(deliveryAddress: string, deliveryInvoice: string, description: string): Promise<void> {
-    await this.headerComponent.cart.click();
-    await this.homePage.expectCartPage();
+    // await this.headerComponent.cart.click();
+    // await this.homePage.expectCartPage();
     await this.buttonProceedToCheckout.click();
     await expect(this.addressDelivery).toHaveText(deliveryAddress);
     await expect(this.addressInvoice).toHaveText(deliveryInvoice);
@@ -80,7 +127,7 @@ export class CartPage extends BasePage {
 
   async checkoutWithoutExpectProductQuantity(deliveryAddress: string, deliveryInvoice: string, description: string): Promise<void> {
     await this.headerComponent.cart.click();
-    await this.homePage.expectCartPage();
+    await this.cart.expectCartPage();
     await this.buttonProceedToCheckout.click();
     await expect(this.addressDelivery).toHaveText(deliveryAddress);
     await expect(this.addressInvoice).toHaveText(deliveryInvoice);
@@ -90,7 +137,7 @@ export class CartPage extends BasePage {
 
   async proceedToCheckoutWithAddressVerification(deliveryAddress: string, deliveryInvoice: string): Promise<void> {
     await this.headerComponent.cart.click();
-    await this.homePage.expectCartPage();
+    await this.cart.expectCartPage();
     await this.buttonProceedToCheckout.click();
     await expect(this.addressDelivery).toHaveText(deliveryAddress);
     await expect(this.addressInvoice).toHaveText(deliveryInvoice);

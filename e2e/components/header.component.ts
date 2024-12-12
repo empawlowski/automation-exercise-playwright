@@ -42,7 +42,7 @@ export class HeaderComponent extends BasePage {
   }
 
   async openProductsPage(): Promise<ProductsPage> {
-    await this.home.click();
+    await this.products.click();
     return new ProductsPage(this.page);
   }
 

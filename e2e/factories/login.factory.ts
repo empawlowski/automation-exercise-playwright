@@ -1,5 +1,13 @@
 import { faker } from '@faker-js/faker';
-import { UserSignupModel } from '../models/login.model';
+import { UserLoginModel, UserSignupModel } from '../models/login.model';
+
+export function createFakeLoginUser(): UserLoginModel {
+  const userFakeLoginModel: UserLoginModel = {
+    email: faker.internet.email({ provider: 'fakerjs.dev' }),
+    password: faker.internet.password(),
+  };
+  return userFakeLoginModel;
+}
 
 export function createSignupUser(sex?: 'female' | 'male'): UserSignupModel {
   const name = faker.person.firstName(sex) ?? faker.person.firstName();

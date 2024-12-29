@@ -1,5 +1,4 @@
-import { test } from '../../fixtures/base.fixture';
-import { expect } from '@playwright/test';
+import { expect, test } from '../../fixtures/base.fixture';
 import { createFakeLoginUser, createSignupUser } from '../../factories/login.factory';
 import { UserLoginModel, UserSignupModel } from '../../models/login.model';
 import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '../../models/signup.model';

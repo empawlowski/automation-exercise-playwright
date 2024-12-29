@@ -1,9 +1,9 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from './e2e/base.page';
-import { UserLoginModel, UserSignupModel } from '../models/login.model';
-import { HomePage } from './e2e/home.page';
-import { SignupPage } from './signup.page';
-import * as data from '../assets/data/e2e/app.data.json';
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { UserLoginModel, UserSignupModel } from '@_e2e/models/e2e/login.model';
+import { SignupPage } from '@_e2e/pages/e2e/authentication/signup.page';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { HomePage } from '@_e2e/pages/e2e/home.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class LoginPage extends BasePage {
   readonly headerLogin: Locator;

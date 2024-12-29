@@ -8,7 +8,7 @@
     "target": "ESNext",
     "module": "CommonJS",
     "baseUrl": ".",
-    "paths": { "@_e2e/*": ["src/*"] }
+    "paths": { "@_e2e/*": ["e2e/*"] }
   },
   "exclude": ["node_modules", "e2e/output/**"]
 }

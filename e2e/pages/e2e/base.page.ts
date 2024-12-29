@@ -1,8 +1,8 @@
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
 import { type Locator, type Page } from '@playwright/test';
-import * as data from '../../assets/data/e2e/app.data.json';
 
 export class BasePage {
-  readonly page: Page;
+  protected readonly page: Page;
   private readonly titleHandler: Locator;
   private readonly buttonConsent: Locator;
   readonly buttonAcceptDialog: Locator;

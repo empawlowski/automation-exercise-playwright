@@ -1,20 +1,20 @@
-import { expect, test } from '../../fixtures/base.fixture';
-import { createFakeLoginUser, createSignupUser } from '../../factories/login.factory';
-import { UserLoginModel, UserSignupModel } from '../../models/login.model';
-import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '../../models/signup.model';
-import { createSignupUserAddressInfo, createSignupUserBasicInfo } from '../../factories/signup.factory';
-import { createContactUsForm } from '../../factories/contact-us.factory';
-import { ProductDetailsModel, ProductReviewModel } from '../../models/product-details.model';
-import { createCardInfoForm } from '../../factories/payment.factory';
-import { CardInfoModel } from '../../models/payment.model';
-import * as data from '../../assets/data/e2e/app.data.json';
-import { createProductReview } from '../../factories/product-details.factory';
-import { CartProductModel } from '../../models/cart.model';
-import { ContactUsModel } from '../../models/contact-us.model';
-import { CheckoutDescModel } from '../../models/checkout.model';
-import { randomDesc } from '../../factories/checkout.factory';
-import { CreateAccountAPIModel, CreateAccountBodyAPIModel } from '../../models/api/authentication/create-account.model';
-import { createAccountAPI } from '../../factories/api/authentication/create-account.factory';
+import { expect, test } from '@_e2e/fixtures/base.fixture';
+import { createFakeLoginUser, createSignupUser } from '@_e2e/factories/login.factory';
+import { UserLoginModel, UserSignupModel } from '@_e2e/models/e2e/login.model';
+import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '@_e2e/models/e2e/signup.model';
+import { createSignupUserAddressInfo, createSignupUserBasicInfo } from '@_e2e/factories/signup.factory';
+import { createContactUsForm } from '@_e2e/factories/contact-us.factory';
+import { ProductDetailsModel, ProductReviewModel } from '@_e2e/models/e2e/product-details.model';
+import { createCardInfoForm } from '@_e2e/factories/payment.factory';
+import { CardInfoModel } from '@_e2e/models/e2e/payment.model';
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { createProductReview } from '@_e2e/factories/product-details.factory';
+import { CartProductModel } from '@_e2e/models/e2e/cart.model';
+import { ContactUsModel } from '@_e2e/models/e2e/contact-us.model';
+import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
+import { randomDesc } from '@_e2e/factories/checkout.factory';
+import { CreateAccountAPIModel, CreateAccountBodyAPIModel } from '@_e2e/models/api/authentication/create-account.model';
+import { createAccountAPI } from '@_e2e/factories/api/authentication/create-account.factory';
 
 test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   test.beforeEach(async ({ home }, testInfo) => {

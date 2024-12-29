@@ -1,5 +1,5 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from './e2e/base.page';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CategoryProductsPage extends BasePage {
   constructor(page: Page) {

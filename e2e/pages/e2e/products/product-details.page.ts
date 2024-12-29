@@ -1,8 +1,8 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from './e2e/base.page';
-import { ProductDetailsModel, ProductReviewModel } from '../models/product-details.model';
-import { CartPage } from './cart.page';
-import * as data from '../assets/data/e2e/app.data.json';
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { ProductDetailsModel, ProductReviewModel } from '@_e2e/models/e2e/product-details.model';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { CartPage } from '@_e2e/pages/e2e/cart.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class ProductDetailsPage extends BasePage {
   readonly productDetailsLocator: Locator;

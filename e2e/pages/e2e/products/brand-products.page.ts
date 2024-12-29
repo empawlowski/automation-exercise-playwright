@@ -1,6 +1,6 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from './base.page';
-import * as data from '../../assets/data/e2e/app.data.json';
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class BrandProducts extends BasePage {
   constructor(page: Page) {

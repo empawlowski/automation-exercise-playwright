@@ -1,5 +1,5 @@
+import { CreateAccountBodyAPIModel } from '@_e2e/models/api/authentication/create-account.model';
 import { expect } from '@playwright/test';
-import { CreateAccountBodyAPIModel } from '../../../models/api/authentication/create-account.model';
 
 export class ResponseAPIPage {
   constructor() {}

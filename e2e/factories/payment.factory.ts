@@ -1,5 +1,5 @@
+import { CardInfoModel } from '@_e2e/models/e2e/payment.model';
 import { faker } from '@faker-js/faker';
-import { CardInfoModel } from '../models/payment.model';
 
 export function createCardInfoForm(): CardInfoModel {
   const cardInfoForm: CardInfoModel = {

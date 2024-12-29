@@ -1,5 +1,5 @@
+import { ContactUsModel } from '@_e2e/models/e2e/contact-us.model';
 import { faker } from '@faker-js/faker';
-import { ContactUsModel } from '../models/contact-us.model';
 
 export function createContactUsForm(): ContactUsModel {
   const contactUsForm: ContactUsModel = {

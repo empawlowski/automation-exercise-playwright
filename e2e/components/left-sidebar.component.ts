@@ -1,7 +1,7 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from '../pages/e2e/base.page';
-import { BrandProducts } from '../pages/e2e/brand-products.page';
-import { CategoryProductsPage } from '../pages/category-products.page';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { BrandProducts } from '@_e2e/pages/e2e/products/brand-products.page';
+import { CategoryProductsPage } from '@_e2e/pages/e2e/products/category-products.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class LeftSidebarComponent extends BasePage {
   readonly sidebarLocator: Locator;

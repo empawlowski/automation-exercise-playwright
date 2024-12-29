@@ -1,6 +1,6 @@
+import { CreateAccountAPIPage } from '@_e2e/pages/api/authentication/create-account.page';
+import { ResponseAPIPage } from '@_e2e/pages/api/response/response.page';
 import { test as requestsTest } from '@playwright/test';
-import { CreateAccountAPIPage } from '../pages/api/authentication/create-account.page';
-import { ResponseAPIPage } from '../pages/api/response/response.page';
 
 interface Requests {
   api: CreateAccountAPIPage;

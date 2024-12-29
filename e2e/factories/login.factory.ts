@@ -1,5 +1,5 @@
+import { UserLoginModel, UserSignupModel } from '@_e2e/models/e2e/login.model';
 import { faker } from '@faker-js/faker';
-import { UserLoginModel, UserSignupModel } from '../models/login.model';
 
 export function createFakeLoginUser(): UserLoginModel {
   const userFakeLoginModel: UserLoginModel = {

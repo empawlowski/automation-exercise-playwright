@@ -1,7 +1,7 @@
+import { FooterComponent } from '@_e2e/components/footer.component';
+import { HeaderComponent } from '@_e2e/components/header.component';
+import { SliderComponent } from '@_e2e/components/slider.component';
 import { test as componentsTest } from '@playwright/test';
-import { HeaderComponent } from '../components/header.component';
-import { SliderComponent } from '../components/slider.component';
-import { FooterComponent } from '../components/footer.component';
 
 interface Components {
   header: HeaderComponent;

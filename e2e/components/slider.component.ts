@@ -1,5 +1,5 @@
+import { BasePage } from '@_e2e/pages/e2e/base.page';
 import { type Locator, type Page } from '@playwright/test';
-import { BasePage } from '../pages/e2e/base.page';
 
 export class SliderComponent extends BasePage {
   private readonly buttonTestCases: Locator;

@@ -1,7 +1,7 @@
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { ContactUsModel } from '@_e2e/models/e2e/contact-us.model';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
 import { type Locator, type Page } from '@playwright/test';
-import { BasePage } from './e2e/base.page';
-import { ContactUsModel } from '../models/contact-us.model';
-import * as data from '../assets/data/e2e/app.data.json';
 
 export class ContactUsPage extends BasePage {
   readonly header: Locator;

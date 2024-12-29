@@ -1,8 +1,8 @@
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { CartProductModel } from '@_e2e/models/e2e/cart.model';
+import { LoginPage } from '@_e2e/pages/e2e/authentication/login.page';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
 import { type Locator, type Page, expect } from '@playwright/test';
-import { BasePage } from './e2e/base.page';
-import { LoginPage } from './login.page';
-import { CartProductModel } from '../models/cart.model';
-import * as data from '../assets/data/e2e/app.data.json';
 
 export class CartPage extends BasePage {
   readonly buttonProceedToCheckout: Locator;

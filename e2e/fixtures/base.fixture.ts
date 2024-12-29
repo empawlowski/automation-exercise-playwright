@@ -1,7 +1,7 @@
+import { api } from '@_e2e/fixtures/api.fixture';
+import { components } from '@_e2e/fixtures/components.fixture';
+import { pages } from '@_e2e/fixtures/pages.fixture';
 import { mergeTests } from '@playwright/test';
-import { pages } from './pages.fixture';
-import { components } from './components.fixture';
-import { api } from './api.fixture';
 
 export const test = mergeTests(pages, components, api);
 

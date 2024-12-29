@@ -1,5 +1,5 @@
+import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
 import { faker } from '@faker-js/faker';
-import { CheckoutDescModel } from '../models/checkout.model';
 
 export function randomDesc(): CheckoutDescModel {
   const description = faker.lorem.text();

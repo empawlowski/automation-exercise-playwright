@@ -1,10 +1,10 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from './e2e/base.page';
-import { UserSignupModel } from '../models/login.model';
-import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '../models/signup.model';
-import { DeleteAccountPage } from './delete-account.page';
-import { AccountCreatedPage } from './e2e/account-created.page';
-import { LoginPage } from './login.page';
+import { UserSignupModel } from '@_e2e/models/e2e/login.model';
+import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '@_e2e/models/e2e/signup.model';
+import { BasePage } from '@_e2e/pages/e2e//base.page';
+import { AccountCreatedPage } from '@_e2e/pages/e2e/authentication/account-created.page';
+import { DeleteAccountPage } from '@_e2e/pages/e2e/authentication/delete-account.page';
+import { LoginPage } from '@_e2e/pages/e2e/authentication/login.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class SignupPage extends BasePage {
   readonly checkboxGenderMr: Locator;

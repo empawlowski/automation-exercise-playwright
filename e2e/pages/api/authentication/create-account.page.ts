@@ -1,5 +1,5 @@
+import { CreateAccountAPIModel } from '@_e2e/models/api/authentication/create-account.model';
 import { APIRequestContext, APIResponse } from '@playwright/test';
-import { CreateAccountAPIModel } from '../../../models/api/authentication/create-account.model';
 
 export class CreateAccountAPIPage {
   private request: APIRequestContext;

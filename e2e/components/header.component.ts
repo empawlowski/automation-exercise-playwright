@@ -1,12 +1,12 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from '../pages/e2e/base.page';
-import { ProductsPage } from '../pages/product.page';
-import { ContactUsPage } from '../pages/contact-us.page';
-import { CartPage } from '../pages/cart.page';
-import { TestCasesPage } from '../pages/test-cases.page';
-import { HomePage } from '../pages/e2e/home.page';
-import { DeleteAccountPage } from '../pages/delete-account.page';
-import { LoginPage } from '../pages/login.page';
+import { DeleteAccountPage } from '@_e2e/pages/e2e/authentication/delete-account.page';
+import { LoginPage } from '@_e2e/pages/e2e/authentication/login.page';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { CartPage } from '@_e2e/pages/e2e/cart.page';
+import { ContactUsPage } from '@_e2e/pages/e2e/contact-us.page';
+import { HomePage } from '@_e2e/pages/e2e/home.page';
+import { ProductsPage } from '@_e2e/pages/e2e/products/product.page';
+import { TestCasesPage } from '@_e2e/pages/e2e/test-cases.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HeaderComponent extends BasePage {
   readonly home: Locator;

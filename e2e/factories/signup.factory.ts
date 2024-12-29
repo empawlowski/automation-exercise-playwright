@@ -1,5 +1,5 @@
+import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '@_e2e/models/e2e/signup.model';
 import { faker } from '@faker-js/faker';
-import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '../models/signup.model';
 
 export function createSignupUserBasicInfo(): UserSignupBasicInfoModel {
   const password = faker.internet.password();

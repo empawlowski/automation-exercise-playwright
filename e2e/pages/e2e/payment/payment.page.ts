@@ -1,7 +1,7 @@
+import { CardInfoModel } from '@_e2e/models/e2e/payment.model';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { PaymentDonePage } from '@_e2e/pages/e2e/payment/payment-done.page';
 import { type Locator, type Page } from '@playwright/test';
-import { BasePage } from './base.page';
-import { CardInfoModel } from '../../models/payment.model';
-import { PaymentDonePage } from './payment-done.page';
 
 export class PaymentPage extends BasePage {
   readonly fieldNameOnCard: Locator;

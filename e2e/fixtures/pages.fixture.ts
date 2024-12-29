@@ -1,13 +1,13 @@
+import { LoginPage } from '@_e2e/pages/e2e/authentication/login.page';
+import { SignupPage } from '@_e2e/pages/e2e/authentication/signup.page';
+import { CartPage } from '@_e2e/pages/e2e/cart.page';
+import { CheckoutPage } from '@_e2e/pages/e2e/checkout.page';
+import { ContactUsPage } from '@_e2e/pages/e2e/contact-us.page';
+import { HomePage } from '@_e2e/pages/e2e/home.page';
+import { PaymentPage } from '@_e2e/pages/e2e/payment/payment.page';
+import { ProductsPage } from '@_e2e/pages/e2e/products/product.page';
+import { TestCasesPage } from '@_e2e/pages/e2e/test-cases.page';
 import { test as pagesTest } from '@playwright/test';
-import { CartPage } from '../pages/cart.page';
-import { HomePage } from '../pages/e2e/home.page';
-import { ProductsPage } from '../pages/product.page';
-import { ContactUsPage } from '../pages/contact-us.page';
-import { TestCasesPage } from '../pages/test-cases.page';
-import { LoginPage } from '../pages/login.page';
-import { SignupPage } from '../pages/signup.page';
-import { CheckoutPage } from '../pages/e2e/checkout.page';
-import { PaymentPage } from '../pages/e2e/payment.page';
 
 interface Pages {
   cart: CartPage;

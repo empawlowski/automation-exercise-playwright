@@ -1,9 +1,9 @@
-import { expect, type Locator, type Page } from '@playwright/test';
-import { BasePage } from './base.page';
-import * as data from '../../assets/data/e2e/app.data.json';
-import { UserSignupAddressInfoModel } from '../../models/signup.model';
-import { PaymentPage } from './payment.page';
-import { CheckoutDescModel } from '../../models/checkout.model';
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
+import { UserSignupAddressInfoModel } from '@_e2e/models/e2e/signup.model';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { PaymentPage } from '@_e2e/pages/e2e/payment/payment.page';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
   readonly deliveryAddressLocator: Locator;

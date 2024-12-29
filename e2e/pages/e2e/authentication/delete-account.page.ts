@@ -1,14 +1,14 @@
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { HomePage } from '@_e2e/pages/e2e/home.page';
 import { type Locator, type Page } from '@playwright/test';
-import { BasePage } from './base.page';
-import { HomePage } from './home.page';
 
-export class AccountCreatedPage extends BasePage {
-  readonly headerAccountCreated: Locator;
+export class DeleteAccountPage extends BasePage {
+  readonly headerAccountDeleted: Locator;
   readonly buttonContinue: Locator;
 
   constructor(page: Page) {
     super(page);
-    this.headerAccountCreated = page.getByTestId('account-created');
+    this.headerAccountDeleted = page.getByTestId('account-deleted');
     this.buttonContinue = page.getByTestId('continue-button');
   }
 

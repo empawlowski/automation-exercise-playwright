@@ -1,5 +1,5 @@
+import { CreateAccountAPIModel } from '@_e2e/models/api/authentication/create-account.model';
 import { faker } from '@faker-js/faker';
-import { CreateAccountAPIModel } from '../../../models/api/authentication/create-account.model';
 
 export function createAccountAPI(): CreateAccountAPIModel {
   const createAccount: CreateAccountAPIModel = {

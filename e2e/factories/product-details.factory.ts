@@ -1,5 +1,5 @@
+import { ProductReviewModel } from '@_e2e/models/e2e/product-details.model';
 import { faker } from '@faker-js/faker';
-import { ProductReviewModel } from '../models/product-details.model';
 
 export function createProductReview(): ProductReviewModel {
   const productReview = {

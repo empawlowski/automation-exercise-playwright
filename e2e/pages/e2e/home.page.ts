@@ -1,11 +1,11 @@
+import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { FooterComponent } from '@_e2e/components/footer.component';
+import { LeftSidebarComponent } from '@_e2e/components/left-sidebar.component';
+import { BasePage } from '@_e2e/pages/e2e/base.page';
+import { CartPage } from '@_e2e/pages/e2e/cart.page';
+import { CategoryProductsPage } from '@_e2e/pages/e2e/products/category-products.page';
+import { ProductsPage } from '@_e2e/pages/e2e/products/product.page';
 import { type Locator, type Page, expect } from '@playwright/test';
-import { BasePage } from './base.page';
-import { LeftSidebarComponent } from '../../components/left-sidebar.component';
-import { CategoryProductsPage } from '../category-products.page';
-import { CartPage } from '../cart.page';
-import { FooterComponent } from '../../components/footer.component';
-import { ProductsPage } from '../product.page';
-import * as data from '../../assets/data/e2e/app.data.json';
 
 export class HomePage extends BasePage {
   readonly headerFullFledged: Locator;

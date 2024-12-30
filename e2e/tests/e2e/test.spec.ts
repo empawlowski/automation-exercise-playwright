@@ -1,20 +1,20 @@
-import { expect, test } from '@_e2e/fixtures/base.fixture';
-import { createFakeLoginUser, createSignupUser } from '@_e2e/factories/login.factory';
-import { UserLoginModel, UserSignupModel } from '@_e2e/models/e2e/login.model';
-import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '@_e2e/models/e2e/signup.model';
-import { createSignupUserAddressInfo, createSignupUserBasicInfo } from '@_e2e/factories/signup.factory';
-import { createContactUsForm } from '@_e2e/factories/contact-us.factory';
-import { ProductDetailsModel, ProductReviewModel } from '@_e2e/models/e2e/product-details.model';
-import { createCardInfoForm } from '@_e2e/factories/payment.factory';
-import { CardInfoModel } from '@_e2e/models/e2e/payment.model';
 import * as data from '@_e2e/assets/data/e2e/app.data.json';
-import { createProductReview } from '@_e2e/factories/product-details.factory';
-import { CartProductModel } from '@_e2e/models/e2e/cart.model';
-import { ContactUsModel } from '@_e2e/models/e2e/contact-us.model';
-import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
-import { randomDesc } from '@_e2e/factories/checkout.factory';
-import { CreateAccountAPIModel, CreateAccountBodyAPIModel } from '@_e2e/models/api/authentication/create-account.model';
 import { createAccountAPI } from '@_e2e/factories/api/authentication/create-account.factory';
+import { randomDesc } from '@_e2e/factories/checkout.factory';
+import { createContactUsForm } from '@_e2e/factories/contact-us.factory';
+import { createFakeLoginUser, createSignupUser } from '@_e2e/factories/login.factory';
+import { createCardInfoForm } from '@_e2e/factories/payment.factory';
+import { createProductReview } from '@_e2e/factories/product-details.factory';
+import { createSignupUserAddressInfo, createSignupUserBasicInfo } from '@_e2e/factories/signup.factory';
+import { expect, test } from '@_e2e/fixtures/base.fixture';
+import { CreateAccountAPIModel } from '@_e2e/models/api/authentication/create-account.model';
+import { CartProductModel } from '@_e2e/models/e2e/cart.model';
+import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
+import { ContactUsModel } from '@_e2e/models/e2e/contact-us.model';
+import { UserLoginModel, UserSignupModel } from '@_e2e/models/e2e/login.model';
+import { CardInfoModel } from '@_e2e/models/e2e/payment.model';
+import { ProductDetailsModel, ProductReviewModel } from '@_e2e/models/e2e/product-details.model';
+import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '@_e2e/models/e2e/signup.model';
 
 test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   test.beforeEach(async ({ home }, testInfo) => {
@@ -52,7 +52,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     await page.close();
   });
 
-  test('Test Case 1: Register User', { tag: ['@smoke'] }, async ({ header, login, signup, home }) => {
+  test('Case 1: Register User', { tag: ['@smoke'] }, async ({ header, login, signup, home }) => {
     //Arrange
     const userBaseData: UserSignupModel = createSignupUser();
     const userBasicInfoData: UserSignupBasicInfoModel = createSignupUserBasicInfo();
@@ -115,7 +115,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 19. Verify that home page is visible successfully
   });
 
-  test('Test Case 2: Login User with correct data', async ({ header, login, api, signup, home }) => {
+  test('Case 2: Login User with correct data', async ({ header, login, api, signup, home }) => {
     //Arrange
     const createAccountAPIData: CreateAccountAPIModel = createAccountAPI();
 
@@ -154,7 +154,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 11. Verify that home page is visible successfully
   });
 
-  test('Test Case 3: Login User with incorrect data', { tag: ['@smoke'] }, async ({ header, login }) => {
+  test('Case 3: Login User with incorrect data', { tag: ['@smoke'] }, async ({ header, login }) => {
     //Arrange
     const userLoginData: UserLoginModel = createFakeLoginUser();
 
@@ -176,7 +176,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify error 'Your email or password is incorrect!' is visible
   });
 
-  test('Test Case 4: Logout User', async ({ header, login }) => {
+  test('Case 4: Logout User', async ({ header, login }) => {
     //Arrange
     const userLoginData: UserLoginModel = {
       email: process.env.USER_EMAIL as string,
@@ -207,7 +207,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 10. Verify that user is navigated to login page
   });
 
-  test('Test Case 5: Register User with existing email', async ({ header, login }) => {
+  test('Case 5: Register User with existing email', async ({ header, login }) => {
     //Arrange
     const userBaseData: UserSignupModel = {
       name: process.env.USER as string,
@@ -233,7 +233,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify error 'Email Address already exist!' is visible
   });
 
-  test('Test Case 6: Contact Us Form', async ({ header, contactUs, home }) => {
+  test('Case 6: Contact Us Form', async ({ header, contactUs, home }) => {
     //Arrange
     const contactUsFormData: ContactUsModel = createContactUsForm();
 
@@ -265,7 +265,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 11. Click 'Home' button and verify that landed to home page successfully
   });
 
-  test('Test Case 7: Verify Test Cases Page', async ({ slider, testCases }) => {
+  test('Case 7: Verify Test Cases Page', async ({ slider, testCases }) => {
     //Act
     await slider.openTestCasesFromSlider();
 
@@ -280,7 +280,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 5. Verify user is navigated to test cases page successfully
   });
 
-  test('Test Case 8: Verify All Products and product detail page', async ({ header, products }) => {
+  test('Case 8: Verify All Products and product detail page', async ({ header, products }) => {
     //Arrange
     const detailsData: ProductDetailsModel = {
       name: 'Blue Top',
@@ -314,11 +314,12 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 9. Verify that detail detail is visible: product name, category, price, availability, condition, brand
   });
 
-  test('Test Case 9: Search Product', async ({ header, products }) => {
+  test('Case 9: Search Product', async ({ header, products }) => {
     //? some search words like "Top" will show products without the name "Top" in the product details.
     //? "Top" also shows results for "Tops".
     //Arrange
     const search: string = 'Blue';
+
     //Act
     await header.openProductsPage();
     await products.expectProductsPage();
@@ -338,7 +339,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify all the products related to search are visible
   });
 
-  test('Test Case 10: Verify Subscription in home page', async ({ home }) => {
+  test('Case 10: Verify Subscription in home page', async ({ home }) => {
     //Arrange
     const emailData: UserLoginModel = createFakeLoginUser();
 
@@ -360,7 +361,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 7. Verify success message 'You have been successfully subscribed!' is visible
   });
 
-  test('Test Case 11: Verify Subscription in Cart page', async ({ header, cart, footer }) => {
+  test('Case 11: Verify Subscription in Cart page', async ({ header, cart, footer }) => {
     //Arrange
     const emailData: UserLoginModel = createFakeLoginUser();
     //Act
@@ -384,7 +385,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify success message 'You have been successfully subscribed!' is visible
   });
 
-  test('Test Case 12: Add Products in Cart', async ({ header, products, cart }) => {
+  test('Case 12: Add Products in Cart', async ({ header, products, cart }) => {
     //Arrange
     const productsData: CartProductModel[] = [
       {
@@ -425,7 +426,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 10. Verify their prices, quantity and total price
   });
 
-  test('Test Case 13: Verify Product quantity in Cart', { tag: ['@smoke'] }, async ({ products, cart }) => {
+  test('Case 13: Verify Product quantity in Cart', { tag: ['@smoke'] }, async ({ products, cart }) => {
     //Arrange
     const productData: CartProductModel = {
       name: 'Blue Top',
@@ -452,7 +453,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 9. Verify that product is displayed in cart page with exact quantity
   });
 
-  test('Test Case 14: Place Order: Register while Checkout', async ({ header, home, cart, signup, checkout, payment }) => {
+  test('Case 14: Place Order: Register while Checkout', async ({ header, home, cart, signup, checkout, payment }) => {
     test.slow();
     //Arrange
     const userBaseData: UserSignupModel = createSignupUser();
@@ -527,7 +528,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
   });
 
-  test('Test Case 15: Place Order: Register before Checkout', async ({ header, signup, home, cart, checkout, payment }) => {
+  test('Case 15: Place Order: Register before Checkout', async ({ header, signup, home, cart, checkout, payment }) => {
     //Arrange
     const userBaseData: UserSignupModel = createSignupUser();
     const userBasicInfoData: UserSignupBasicInfoModel = createSignupUserBasicInfo();
@@ -589,7 +590,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 18. Verify 'ACCOUNT DELETED!' and click 'Continue' button
   });
 
-  test('Test Case 16: Place Order: Login before Checkout', async ({ header, signup, home, cart, checkout, payment }) => {
+  test('Case 16: Place Order: Login before Checkout', async ({ header, signup, home, cart, checkout, payment }) => {
     // Arrange
     const userBaseData: UserSignupModel = createSignupUser();
     const userBasicInfoData: UserSignupBasicInfoModel = createSignupUserBasicInfo();
@@ -656,7 +657,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 17. Verify 'ACCOUNT DELETED!' and click 'Continue' button
   });
 
-  test('Test Case 17: Remove Products From Cart', async ({ home, header, cart }) => {
+  test('Case 17: Remove Products From Cart', async ({ home, header, cart }) => {
     //Arrange
     const productsData: CartProductModel[] = [
       {
@@ -701,7 +702,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify that product is removed from the cart
   });
 
-  test('Test Case 18: View Category Products', async ({ home }) => {
+  test('Case 18: View Category Products', async ({ home }) => {
     //Arrange
     const womenProductData = {
       category: 'Women',
@@ -744,7 +745,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify that user is navigated to that category page
   });
 
-  test('Test Case 19: View & Cart Brand Products', { tag: ['@smoke'] }, async ({ header, products }) => {
+  test('Case 19: View & Cart Brand Products', { tag: ['@smoke'] }, async ({ header, products }) => {
     //Arrange
     const brandsData = {
       polo: data.products.name.polo,
@@ -774,7 +775,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 8. Verify that user is navigated to that brand page and can see products
   });
 
-  test('Test Case 20: Search Products and Verify Cart After Login', async ({ header, products, cart, login }) => {
+  test('Case 20: Search Products and Verify Cart After Login', async ({ header, products, cart, login }) => {
     //Arrange
     const search: string = 'Blue';
     const expectProductNumber: number = 7;
@@ -856,7 +857,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 12. Verify that those products are visible in cart after login as well
   });
 
-  test('Test Case 21: Add review on product', async ({ header, products }) => {
+  test('Case 21: Add review on product', async ({ header, products }) => {
     //Arrange
     const reviewData: ProductReviewModel = createProductReview();
 
@@ -882,7 +883,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 9. Verify success message 'Thank you for your review.'
   });
 
-  test('Test Case 22: Add to cart from Recommended items', async ({ home, cart }) => {
+  test('Case 22: Add to cart from Recommended items', async ({ home, cart }) => {
     //Act
     await home.scrollDownPage();
     await expect.soft(home.headerRecommendedItems).toBeVisible();
@@ -901,7 +902,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 7. Verify that product is displayed in cart page
   });
 
-  test('Test Case 23: Verify address details in checkout page', async ({ header, signup, home, cart, checkout }) => {
+  test('Case 23: Verify address details in checkout page', async ({ header, signup, home, cart, checkout }) => {
     //Arrange
     const userBaseData: UserSignupModel = createSignupUser();
     const userBasicInfoData: UserSignupBasicInfoModel = createSignupUserBasicInfo();
@@ -956,7 +957,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 15. Verify 'ACCOUNT DELETED!' and click 'Continue' button
   });
 
-  test('Test Case 24: Download Invoice after purchase order', async ({ home, header, cart, signup, checkout, payment }) => {
+  test('Case 24: Download Invoice after purchase order', async ({ home, header, cart, signup, checkout, payment }) => {
     //Arrange
     const userBaseData: UserSignupModel = createSignupUser();
     const userBasicInfoData: UserSignupBasicInfoModel = createSignupUserBasicInfo();
@@ -1035,7 +1036,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 22. Verify 'ACCOUNT DELETED!' and click 'Continue' button
   });
 
-  test('Test Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', async ({ home }) => {
+  test('Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', async ({ home }) => {
     //Act
     await home.scrollDownPage();
     await expect(home.footer.headerSubscription).toBeInViewport();
@@ -1059,7 +1060,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 7. Verify that page is scrolled up and 'Full-Fledged practice website for Automation Engineers' text is visible on screen
   });
 
-  test('Test Case 26: Verify Scroll Up without "Arrow" button and Scroll Down functionality', async ({ home }) => {
+  test('Case 26: Verify Scroll Up without "Arrow" button and Scroll Down functionality', async ({ home }) => {
     //Act
     await home.scrollDownPage();
     await expect(home.footer.headerSubscription).toBeInViewport();

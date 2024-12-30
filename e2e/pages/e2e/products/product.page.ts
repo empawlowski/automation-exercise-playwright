@@ -67,9 +67,9 @@ export class ProductsPage extends BasePage {
   }
 
   async isFoundProductsHaveSearchText(search: string): Promise<void> {
-    let products = await this.singleProduct.all();
+    const products = await this.singleProduct.all();
     if (await this.singleProduct.first().isVisible()) {
-      for (let product of products) {
+      for (const product of products) {
         await expect.soft(product).toContainText(search, { ignoreCase: true });
       }
     } else {

@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { expect, test } from '@playwright/test';
 
 test.describe('APIs List for practice', () => {
   test('API 0: 404 Page', async ({ request }) => {
@@ -427,7 +427,7 @@ test.describe('APIs List for practice', () => {
     // Response Message: User updated!
   });
 
-  test('API 13.1: PUT METHOD To Update User Account with invalid details ', async ({ request }) => {
+  test('API 13.1: PUT METHOD To Update User Account with invalid details', async ({ request }) => {
     //Arrange
     const response = await request.put('api/updateAccount', {
       form: {

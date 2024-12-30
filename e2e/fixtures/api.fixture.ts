@@ -11,7 +11,7 @@ export const api = requestsTest.extend<Requests>({
   api: async ({ request }, use) => {
     await use(new CreateAccountAPIPage(request));
   },
-  apiR: async ({}, use) => {
-    await use(new ResponseAPIPage());
+  apiR: async () => {
+    new ResponseAPIPage();
   },
 });

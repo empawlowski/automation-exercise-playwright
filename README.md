@@ -222,7 +222,9 @@
     npm install --save-dev @faker-js/faker
     ```
   - usage
+
     ```javascript
     import { faker } from '@faker-js/faker';
+
     const email = faker.internet.email();
     ```

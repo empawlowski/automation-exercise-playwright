@@ -4,25 +4,34 @@
   "description": "Automation tests for online shop by using Playwright framework.",
   "main": "index.js",
   "scripts": {
+    "format": "npx prettier --write .",
+    "format:check": "npx prettier . --check \"!**.ts\"",
+    "lint": "npx eslint . --max-warnings 0",
     "tsc:check": "tsc --noEmit --pretty --strict",
     "test": "npx playwright test",
     "test:ui": "npx playwright test --ui",
     "test:smoke": "npx playwright test -g @smoke",
-    "test:home": "npm run test tests/e2e/home.spec.ts",
-    "test:home:headed": "npm run test tests/e2e/home.spec.ts -- --headed",
-    "test:api": "npx playwright test tests/api/api.spec.ts --project=Chromium",
+    "test:headed": "npm run test tests/e2e/test.spec.ts -- --headed",
+    "test:api": "npx playwright test tests/api/api.spec.ts --project=chromium",
     "record": "npx playwright codegen https://automationexercise.com"
   },
   "keywords": [],
   "author": "Marcin Pawłowski",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.17.0",
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.49.0",
     "@trivago/prettier-plugin-sort-imports": "^5.2.0",
     "@types/node": "^22.10.1",
     "dotenv": "^16.4.7",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-playwright": "^2.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.14.0",
     "prettier": "^3.4.1",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.2"
   }
 }

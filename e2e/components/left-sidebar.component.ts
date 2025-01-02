@@ -27,7 +27,7 @@ export class LeftSidebarComponent extends BasePage {
     return this.page.getByRole('link', { name: brand });
   }
 
-  async expectLeftSidebar() {
+  async expectLeftSidebar(): Promise<void> {
     await expect(this.sidebarLocator).toBeVisible();
     await expect(this.headerSidebarCategory).toBeVisible();
     await expect(this.headerSidebarBrands).toBeVisible();

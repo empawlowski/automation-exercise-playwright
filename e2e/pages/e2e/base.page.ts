@@ -50,11 +50,12 @@ export class BasePage {
     await this.buttonScrollUp.click();
   }
 
-  async takeScreenShot(screenShotName: string) {
+  async takeScreenShot(screenShotName: string): Promise<void> {
     await this.page.screenshot({ path: `./e2e/download/ui/home/${screenShotName}.png` });
   }
 
-  async giveMeSmallSecond(timeout: number = 200) {
+  async giveMeSmallSecond(timeout: number = 200): Promise<void> {
+    // eslint-disable-next-line playwright/no-wait-for-timeout
     await this.page.waitForTimeout(timeout);
   }
 }

@@ -1,4 +1,9 @@
 {
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
   "cSpell.words": ["accordian", "codegen", "firstname", "lastname", "trivago"],
   "cSpell.ignoreWords": ["fakerjs", "optin", "tseslint", "zipcode"]
 }

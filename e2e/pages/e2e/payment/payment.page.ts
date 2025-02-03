@@ -4,13 +4,13 @@ import { PaymentDonePage } from '@_e2e/pages/e2e/payment/payment-done.page';
 import { type Locator, type Page } from '@playwright/test';
 
 export class PaymentPage extends BasePage {
-  readonly fieldNameOnCard: Locator;
-  readonly fieldCardNumber: Locator;
-  readonly fieldCvc: Locator;
-  readonly fieldExpiryMonth: Locator;
-  readonly fieldExpiryYear: Locator;
-  readonly buttonPayAndConfirm: Locator;
-  readonly alert: Locator;
+  private readonly fieldNameOnCard: Locator;
+  private readonly fieldCardNumber: Locator;
+  private readonly fieldCvc: Locator;
+  private readonly fieldExpiryMonth: Locator;
+  private readonly fieldExpiryYear: Locator;
+  private readonly buttonPayAndConfirm: Locator;
+  private readonly alert: Locator;
 
   readonly done: PaymentDonePage;
 

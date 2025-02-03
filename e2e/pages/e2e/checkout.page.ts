@@ -6,12 +6,12 @@ import { PaymentPage } from '@_e2e/pages/e2e/payment/payment.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CheckoutPage extends BasePage {
-  readonly deliveryAddressLocator: Locator;
-  readonly headerDeliveryAddress: Locator;
-  readonly invoiceAddressLocator: Locator;
-  readonly headerDeliveryInvoice: Locator;
-  readonly fieldDescription: Locator;
-  readonly buttonPlaceOrder: Locator;
+  private readonly deliveryAddressLocator: Locator;
+  private readonly headerDeliveryAddress: Locator;
+  private readonly invoiceAddressLocator: Locator;
+  private readonly headerDeliveryInvoice: Locator;
+  private readonly fieldDescription: Locator;
+  private readonly buttonPlaceOrder: Locator;
 
   constructor(page: Page) {
     super(page);

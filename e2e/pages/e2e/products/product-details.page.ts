@@ -5,19 +5,19 @@ import { CartPage } from '@_e2e/pages/e2e/cart.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class ProductDetailsPage extends BasePage {
-  readonly productDetailsLocator: Locator;
-  readonly headerProductName: Locator;
+  private readonly productDetailsLocator: Locator;
+  private readonly headerProductName: Locator;
 
-  readonly fieldQuantity: Locator;
-  readonly buttonAddToCart: Locator;
-  readonly linkViewCart: Locator;
+  private readonly fieldQuantity: Locator;
+  private readonly buttonAddToCart: Locator;
+  private readonly linkViewCart: Locator;
 
   readonly linkWriteReview: Locator;
-  readonly fieldName: Locator;
-  readonly fieldEmail: Locator;
-  readonly fieldReview: Locator;
-  readonly buttonSubmit: Locator;
-  readonly alert: Locator;
+  private readonly fieldName: Locator;
+  private readonly fieldEmail: Locator;
+  private readonly fieldReview: Locator;
+  private readonly buttonSubmit: Locator;
+  private readonly alert: Locator;
 
   constructor(page: Page) {
     super(page);

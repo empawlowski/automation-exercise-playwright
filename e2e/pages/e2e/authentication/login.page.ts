@@ -7,16 +7,16 @@ import { type Locator, type Page, expect } from '@playwright/test';
 
 export class LoginPage extends BasePage {
   readonly headerLogin: Locator;
-  readonly fieldLoginEmail: Locator;
-  readonly fieldLoginPassword: Locator;
+  private readonly fieldLoginEmail: Locator;
+  private readonly fieldLoginPassword: Locator;
   readonly paragraphLoginIncorrectData: Locator;
-  readonly buttonLogin: Locator;
+  private readonly buttonLogin: Locator;
 
   readonly headerSignup: Locator;
-  readonly fieldSignupName: Locator;
-  readonly fieldSignupEmail: Locator;
+  private readonly fieldSignupName: Locator;
+  private readonly fieldSignupEmail: Locator;
   readonly paragraphSignupIncorrectData: Locator;
-  readonly buttonSignup: Locator;
+  private readonly buttonSignup: Locator;
 
   constructor(page: Page) {
     super(page);

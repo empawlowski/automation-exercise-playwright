@@ -9,9 +9,9 @@ import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HomePage extends BasePage {
   readonly headerFullFledged: Locator;
-  readonly linkViewCart: Locator;
+  private readonly linkViewCart: Locator;
   readonly headerRecommendedItems: Locator;
-  readonly linkAddToCartFromRecommendedItems: Locator;
+  private readonly linkAddToCartFromRecommendedItems: Locator;
 
   readonly leftSidebar: LeftSidebarComponent;
   readonly products: ProductsPage;

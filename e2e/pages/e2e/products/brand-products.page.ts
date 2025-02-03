@@ -7,7 +7,7 @@ export class BrandProducts extends BasePage {
     super(page);
   }
 
-  getHeader(header: string): Locator {
+  private getHeader(header: string): Locator {
     return this.page.getByRole('heading', { name: `Brand - ${header}`, exact: true });
   }
 

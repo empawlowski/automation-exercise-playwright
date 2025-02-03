@@ -4,9 +4,9 @@ import { CategoryProductsPage } from '@_e2e/pages/e2e/products/category-products
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class LeftSidebarComponent extends BasePage {
-  readonly sidebarLocator: Locator;
-  readonly headerSidebarCategory: Locator;
-  readonly headerSidebarBrands: Locator;
+  private readonly sidebarLocator: Locator;
+  private readonly headerSidebarCategory: Locator;
+  private readonly headerSidebarBrands: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -15,15 +15,15 @@ export class LeftSidebarComponent extends BasePage {
     this.headerSidebarBrands = page.locator('.left-sidebar').getByRole('heading', { name: 'Brands' });
   }
 
-  getCategory(category: string): Locator {
+  private getCategory(category: string): Locator {
     return this.page.getByRole('link', { name: ` ${category}` });
   }
 
-  getCategoryProducts(products: string): Locator {
+  private getCategoryProducts(products: string): Locator {
     return this.page.getByRole('link', { name: products });
   }
 
-  getBrandName(brand: string): Locator {
+  private getBrandName(brand: string): Locator {
     return this.page.getByRole('link', { name: brand });
   }
 

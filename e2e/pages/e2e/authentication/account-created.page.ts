@@ -4,7 +4,7 @@ import { type Locator, type Page } from '@playwright/test';
 
 export class AccountCreatedPage extends BasePage {
   readonly headerAccountCreated: Locator;
-  readonly buttonContinue: Locator;
+  private readonly buttonContinue: Locator;
 
   constructor(page: Page) {
     super(page);

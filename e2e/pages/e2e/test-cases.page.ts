@@ -3,7 +3,7 @@ import { BasePage } from '@_e2e/pages/e2e/base.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class TestCasesPage extends BasePage {
-  readonly header: Locator;
+  private readonly header: Locator;
 
   constructor(page: Page) {
     super(page);

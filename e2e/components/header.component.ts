@@ -9,16 +9,16 @@ import { TestCasesPage } from '@_e2e/pages/e2e/test-cases.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HeaderComponent extends BasePage {
-  readonly home: Locator;
-  readonly products: Locator;
-  readonly cart: Locator;
-  readonly signLogin: Locator;
-  readonly deleteAccount: Locator;
-  readonly testCases: Locator;
-  readonly apiTesting: Locator;
-  readonly videoTutorials: Locator;
-  readonly contactUs: Locator;
-  readonly logout: Locator;
+  private readonly home: Locator;
+  private readonly products: Locator;
+  private readonly cart: Locator;
+  private readonly signLogin: Locator;
+  private readonly deleteAccount: Locator;
+  private readonly testCases: Locator;
+  private readonly apiTesting: Locator;
+  private readonly videoTutorials: Locator;
+  private readonly contactUs: Locator;
+  private readonly logout: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -34,7 +34,7 @@ export class HeaderComponent extends BasePage {
     this.logout = page.getByRole('link', { name: 'Logout' });
   }
 
-  getLoggedUser(username: string): Locator {
+  private getLoggedUser(username: string): Locator {
     return this.page.getByRole('listitem').filter({ hasText: `Logged in as ${username}` });
   }
 

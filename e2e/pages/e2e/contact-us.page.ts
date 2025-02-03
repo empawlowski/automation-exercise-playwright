@@ -5,12 +5,12 @@ import { type Locator, type Page } from '@playwright/test';
 
 export class ContactUsPage extends BasePage {
   readonly header: Locator;
-  readonly fieldName: Locator;
-  readonly fieldEmail: Locator;
-  readonly fieldSubject: Locator;
-  readonly fieldMessage: Locator;
-  readonly fieldFileUpload: Locator;
-  readonly buttonSubmit: Locator;
+  private readonly fieldName: Locator;
+  private readonly fieldEmail: Locator;
+  private readonly fieldSubject: Locator;
+  private readonly fieldMessage: Locator;
+  private readonly fieldFileUpload: Locator;
+  private readonly buttonSubmit: Locator;
   readonly alertMessage: Locator;
   readonly buttonBackHome: Locator;
 

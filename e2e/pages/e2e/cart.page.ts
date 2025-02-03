@@ -5,14 +5,14 @@ import { BasePage } from '@_e2e/pages/e2e/base.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class CartPage extends BasePage {
-  readonly buttonProceedToCheckout: Locator;
-  readonly buttonRegisterLogin: Locator;
+  private readonly buttonProceedToCheckout: Locator;
+  private readonly buttonRegisterLogin: Locator;
   readonly rowForProduct: Locator;
-  readonly cellDescription: Locator;
-  readonly cellPrice: Locator;
-  readonly cellQuantity: Locator;
-  readonly cellTotalPrice: Locator;
-  readonly buttonDeleteQuantity: Locator;
+  private readonly cellDescription: Locator;
+  private readonly cellPrice: Locator;
+  private readonly cellQuantity: Locator;
+  private readonly cellTotalPrice: Locator;
+  private readonly buttonDeleteQuantity: Locator;
   readonly sectionCartEmpty: Locator;
 
   constructor(page: Page) {
@@ -28,7 +28,7 @@ export class CartPage extends BasePage {
     this.sectionCartEmpty = page.locator('#empty_cart');
   }
 
-  getProductName(productName: string): Locator {
+  private getProductName(productName: string): Locator {
     return this.page.getByRole('row', { name: productName });
   }
 

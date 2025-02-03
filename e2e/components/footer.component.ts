@@ -3,8 +3,8 @@ import { type Locator, type Page } from '@playwright/test';
 
 export class FooterComponent extends BasePage {
   readonly headerSubscription: Locator;
-  readonly fieldSubscribe: Locator;
-  readonly buttonSubscribe: Locator;
+  private readonly fieldSubscribe: Locator;
+  private readonly buttonSubscribe: Locator;
   readonly alertSuccessSubs: Locator;
 
   constructor(page: Page) {

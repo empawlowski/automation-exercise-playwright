@@ -7,32 +7,31 @@ import { LoginPage } from '@_e2e/pages/e2e/authentication/login.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class SignupPage extends BasePage {
-  readonly checkboxGenderMr: Locator;
-  readonly checkboxGenderMrs: Locator;
-  readonly fieldName: Locator;
-  readonly fieldEmail: Locator;
+  private readonly checkboxGenderMr: Locator;
+  private readonly checkboxGenderMrs: Locator;
+  private readonly fieldName: Locator;
+  private readonly fieldEmail: Locator;
 
-  readonly fieldPassword: Locator;
-  readonly selectDays: Locator;
-  readonly selectMonths: Locator;
-  readonly selectYears: Locator;
+  private readonly fieldPassword: Locator;
+  private readonly selectDays: Locator;
+  private readonly selectMonths: Locator;
+  private readonly selectYears: Locator;
 
-  readonly checkboxNewsletter: Locator;
-  readonly checkboxOffers: Locator;
+  private readonly checkboxNewsletter: Locator;
+  private readonly checkboxOffers: Locator;
 
-  readonly fieldFirstName: Locator;
-  readonly fieldLastName: Locator;
-  readonly fieldCompany: Locator;
-  readonly fieldAddress: Locator;
-  readonly fieldAddress2: Locator;
-  readonly fieldCountry: Locator;
-  readonly fieldState: Locator;
-  readonly fieldCity: Locator;
-  readonly fieldZipCode: Locator;
-  readonly fieldMobileNumber: Locator;
+  private readonly fieldFirstName: Locator;
+  private readonly fieldLastName: Locator;
+  private readonly fieldCompany: Locator;
+  private readonly fieldAddress: Locator;
+  private readonly fieldAddress2: Locator;
+  private readonly fieldCountry: Locator;
+  private readonly fieldState: Locator;
+  private readonly fieldCity: Locator;
+  private readonly fieldZipCode: Locator;
+  private readonly fieldMobileNumber: Locator;
 
-  readonly buttonCreateAccount: Locator;
-  readonly buttonContinue: Locator;
+  private readonly buttonCreateAccount: Locator;
 
   readonly create: AccountCreatedPage;
   readonly delete: DeleteAccountPage;
@@ -40,32 +39,31 @@ export class SignupPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.checkboxGenderMr = this.page.locator('#id_gender1');
-    this.checkboxGenderMrs = this.page.locator('#id_gender2');
+    this.checkboxGenderMr = page.locator('#id_gender1');
+    this.checkboxGenderMrs = page.locator('#id_gender2');
     this.fieldName = page.getByTestId('name');
     this.fieldEmail = page.getByTestId('email');
 
     this.fieldPassword = page.getByTestId('password');
-    this.selectDays = this.page.getByTestId('days');
-    this.selectMonths = this.page.getByTestId('months');
-    this.selectYears = this.page.getByTestId('years');
+    this.selectDays = page.getByTestId('days');
+    this.selectMonths = page.getByTestId('months');
+    this.selectYears = page.getByTestId('years');
 
-    this.checkboxNewsletter = this.page.locator('#newsletter');
-    this.checkboxOffers = this.page.locator('#optin');
+    this.checkboxNewsletter = page.locator('#newsletter');
+    this.checkboxOffers = page.locator('#optin');
 
-    this.fieldFirstName = this.page.getByTestId('first_name');
-    this.fieldLastName = this.page.getByTestId('last_name');
-    this.fieldCompany = this.page.getByTestId('company');
-    this.fieldAddress = this.page.getByTestId('address');
-    this.fieldAddress2 = this.page.getByTestId('address2');
-    this.fieldCountry = this.page.getByTestId('country');
-    this.fieldState = this.page.getByTestId('state');
-    this.fieldCity = this.page.getByTestId('city');
-    this.fieldZipCode = this.page.getByTestId('zipcode');
-    this.fieldMobileNumber = this.page.getByTestId('mobile_number');
+    this.fieldFirstName = page.getByTestId('first_name');
+    this.fieldLastName = page.getByTestId('last_name');
+    this.fieldCompany = page.getByTestId('company');
+    this.fieldAddress = page.getByTestId('address');
+    this.fieldAddress2 = page.getByTestId('address2');
+    this.fieldCountry = page.getByTestId('country');
+    this.fieldState = page.getByTestId('state');
+    this.fieldCity = page.getByTestId('city');
+    this.fieldZipCode = page.getByTestId('zipcode');
+    this.fieldMobileNumber = page.getByTestId('mobile_number');
 
-    this.buttonCreateAccount = this.page.getByTestId('create-account');
-    this.buttonContinue = this.page.getByTestId('continue-button');
+    this.buttonCreateAccount = page.getByTestId('create-account');
 
     this.create = new AccountCreatedPage(page);
     this.delete = new DeleteAccountPage(page);

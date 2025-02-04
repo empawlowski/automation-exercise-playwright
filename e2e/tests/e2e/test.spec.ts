@@ -7,7 +7,7 @@ import { createCardInfoForm } from '@_e2e/factories/payment.factory';
 import { createProductReview } from '@_e2e/factories/product-details.factory';
 import { createSignupUserAddressInfo, createSignupUserBasicInfo } from '@_e2e/factories/signup.factory';
 import { expect, test } from '@_e2e/fixtures/base.fixture';
-import { CreateAccountAPIModel } from '@_e2e/models/api/authentication/create-account.model';
+import { CreateAccountApiModel, CreateAccountBodyApiModel } from '@_e2e/models/api/authentication/create-account.model';
 import { CartProductModel } from '@_e2e/models/e2e/cart.model';
 import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
 import { ContactUsModel } from '@_e2e/models/e2e/contact-us.model';
@@ -115,9 +115,9 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 19. Verify that home page is visible successfully
   });
 
-  test('Case 2: Login User with correct data', async ({ header, login, api, signup, home }) => {
+  test('Case 2: Login User with correct data', async ({ header, login, api, apiR, signup, home }) => {
     //Arrange
-    const createAccountAPIData: CreateAccountAPIModel = createAccountAPI();
+    const createAccountAPIData: CreateAccountApiModel = createAccountAPI();
 
     //Act
     await header.openSignupLoginPage();
@@ -125,11 +125,11 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
 
     const response = await api.createUser(createAccountAPIData);
     expect(response.ok()).toBeTruthy();
-    // expect(response.status()).toBe(200);
-    // const responseBody: CreateAccountBodyAPIModel = await response.json();
+    expect(response.status()).toBe(200);
+    const responseBody: CreateAccountBodyApiModel = await response.json();
     // console.log(responseBody);
-    // apiR.checkResponseCode(responseBody, 201);
-    // apiR.checkResponseMessage(responseBody, 'User created!');
+    apiR.checkResponseCode(responseBody, 201);
+    apiR.checkResponseMessage(responseBody, 'User created!');
 
     await login.loginToAccount(createAccountAPIData);
     await header.expectLoggedUser(createAccountAPIData.name);

@@ -1,4 +1,4 @@
-export interface CreateAccountAPIModel {
+export interface CreateAccountApiModel {
   name: string;
   email: string;
   password: string;
@@ -18,7 +18,7 @@ export interface CreateAccountAPIModel {
   mobile_number: string;
 }
 
-export interface CreateAccountBodyAPIModel {
+export interface CreateAccountBodyApiModel {
   responseCode: number;
   message: string;
 }

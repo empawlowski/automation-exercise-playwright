@@ -1,8 +1,8 @@
-import { CreateAccountAPIModel } from '@_e2e/models/api/authentication/create-account.model';
+import { CreateAccountApiModel } from '@_e2e/models/api/authentication/create-account.model';
 import { APIRequestContext, APIResponse } from '@playwright/test';
 
 export class CreateAccountAPIPage {
-  private request: APIRequestContext;
+  private readonly request: APIRequestContext;
   private readonly createAccount: string;
 
   constructor(request: APIRequestContext) {
@@ -10,7 +10,7 @@ export class CreateAccountAPIPage {
     this.createAccount = '/api/createAccount';
   }
 
-  async createUser(user: CreateAccountAPIModel): Promise<APIResponse> {
+  async createUser(user: CreateAccountApiModel): Promise<APIResponse> {
     return this.request.post(this.createAccount, {
       headers: {
         Accept: '*/*',

@@ -1,8 +1,8 @@
-import { CreateAccountAPIModel } from '@_e2e/models/api/authentication/create-account.model';
+import { CreateAccountApiModel } from '@_e2e/models/api/authentication/create-account.model';
 import { faker } from '@faker-js/faker';
 
-export function createAccountAPI(): CreateAccountAPIModel {
-  const createAccount: CreateAccountAPIModel = {
+export function createAccountAPI(): CreateAccountApiModel {
+  const createAccount: CreateAccountApiModel = {
     name: process.env.USER_API as string,
     email: process.env.USER_API_EMAIL as string,
     password: process.env.USER_PASSWORD as string,

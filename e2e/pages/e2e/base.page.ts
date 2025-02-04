@@ -1,4 +1,5 @@
 import * as data from '@_e2e/assets/data/e2e/app.data.json';
+import { ScrollHelper } from '@_e2e/helpers/scroll.helper';
 import { type Locator, type Page } from '@playwright/test';
 
 export class BasePage {
@@ -35,15 +36,11 @@ export class BasePage {
   }
 
   async scrollDownPage(): Promise<void> {
-    await this.page.evaluate(() => {
-      window.scrollTo(0, document.body.scrollHeight);
-    });
+    await ScrollHelper.scrollDownPage(this.page);
   }
 
   async scrollUpPage(): Promise<void> {
-    await this.page.evaluate(() => {
-      window.scrollTo(0, 0);
-    });
+    await ScrollHelper.scrollUpPage(this.page);
   }
 
   async clickScrollUpArrow(): Promise<void> {

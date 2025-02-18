@@ -1,17 +1,17 @@
-import { CreateAccountAPIPage } from '@_e2e/pages/api/authentication/create-account.page';
-import { ResponseAPIPage } from '@_e2e/pages/api/response/response.page';
-import { test as requestsTest } from '@playwright/test';
+import { RequestApiPage } from '@_e2e/pages/api/request/request.page';
+import { ResponseApiPage } from '@_e2e/pages/api/response/response.page';
+import { test as apiTest } from '@playwright/test';
 
 interface Requests {
-  api: CreateAccountAPIPage;
-  apiR: ResponseAPIPage;
+  apiRequest: RequestApiPage;
+  apiResponse: ResponseApiPage;
 }
 
-export const api = requestsTest.extend<Requests>({
-  api: async ({ request }, use) => {
-    await use(new CreateAccountAPIPage(request));
+export const api = apiTest.extend<Requests>({
+  apiRequest: async ({ request }, use) => {
+    await use(new RequestApiPage(request));
   },
-  apiR: async ({}, use) => {
-    await use(new ResponseAPIPage());
+  apiResponse: async ({}, use) => {
+    await use(new ResponseApiPage());
   },
 });

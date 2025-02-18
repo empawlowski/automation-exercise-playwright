@@ -4,6 +4,6 @@
   "editor.codeActionsOnSave": {
     "source.organizeImports": "explicit"
   },
-  "cSpell.words": ["accordian", "codegen", "firstname", "lastname", "trivago"],
-  "cSpell.ignoreWords": ["fakerjs", "optin", "tseslint", "zipcode"]
+  "cSpell.words": ["accordian", "bugcatcher", "codegen", "firstname", "lastname", "trivago"],
+  "cSpell.ignoreWords": ["fakerjs", "optin", "tseslint", "usertype", "zipcode"]
 }

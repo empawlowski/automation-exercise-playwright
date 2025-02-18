@@ -22,3 +22,8 @@ export interface CreateAccountBodyApiModel {
   responseCode: number;
   message: string;
 }
+
+export interface VerifyLoginFormApiModel {
+  email?: string;
+  password?: string;
+}

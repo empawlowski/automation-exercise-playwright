@@ -1,5 +1,5 @@
 import * as data from '@_e2e/assets/data/e2e/app.data.json';
-import { createAccountAPI } from '@_e2e/factories/api/authentication/create-account.factory';
+import { createAccountApi } from '@_e2e/factories/api/authentication/create-account.factory';
 import { randomDesc } from '@_e2e/factories/checkout.factory';
 import { createContactUsForm } from '@_e2e/factories/contact-us.factory';
 import { createFakeLoginUser, createSignupUser } from '@_e2e/factories/login.factory';
@@ -115,24 +115,25 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     // 19. Verify that home page is visible successfully
   });
 
-  test('Case 2: Login User with correct data', async ({ header, login, api, apiR, signup, home }) => {
+  test('Case 2: Login User with correct data', async ({ header, login, apiRequest, apiResponse, signup, home }) => {
     //Arrange
-    const createAccountAPIData: CreateAccountApiModel = createAccountAPI();
+    const apiUrl: string = '/api/createAccount';
+    const createAccountApiData: CreateAccountApiModel = createAccountApi();
 
     //Act
     await header.openSignupLoginPage();
     await expect(login.headerLogin).toBeVisible();
 
-    const response = await api.createUser(createAccountAPIData);
+    const response = await apiRequest.createAccount(apiUrl, createAccountApiData);
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
     const responseBody: CreateAccountBodyApiModel = await response.json();
-    // console.log(responseBody);
-    apiR.checkResponseCode(responseBody, 201);
-    apiR.checkResponseMessage(responseBody, 'User created!');
+    console.log(responseBody);
+    apiResponse.checkResponseCode(responseBody, 201);
+    apiResponse.checkResponseMessage(responseBody, 'User created!');
 
-    await login.loginToAccount(createAccountAPIData);
-    await header.expectLoggedUser(createAccountAPIData.name);
+    await login.loginToAccount(createAccountApiData);
+    await header.expectLoggedUser(createAccountApiData.name);
     await header.clickDeleteAccount();
     await expect(signup.delete.headerAccountDeleted).toContainText('Account Deleted!');
     await signup.delete.clickContinue();

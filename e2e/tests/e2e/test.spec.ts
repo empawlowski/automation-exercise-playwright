@@ -7,6 +7,7 @@ import { createCardInfoForm } from '@_e2e/factories/payment.factory';
 import { createProductReview } from '@_e2e/factories/product-details.factory';
 import { createSignupUserAddressInfo, createSignupUserBasicInfo } from '@_e2e/factories/signup.factory';
 import { expect, test } from '@_e2e/fixtures/base.fixture';
+import { logger } from '@_e2e/helpers/logger.helper';
 import { CreateAccountApiModel, CreateAccountBodyApiModel } from '@_e2e/models/api/authentication/create-account.model';
 import { CartProductModel } from '@_e2e/models/e2e/cart.model';
 import { CheckoutDescModel } from '@_e2e/models/e2e/checkout.model';
@@ -19,7 +20,7 @@ import { UserSignupAddressInfoModel, UserSignupBasicInfoModel } from '@_e2e/mode
 test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   test.beforeEach(async ({ home }, testInfo) => {
     //Arrange
-    console.log(`Running ${testInfo.title}`);
+    logger.info(`Running ${testInfo.title}`);
 
     //Act
     //* Advertisements blocker
@@ -45,9 +46,9 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   });
 
   test.afterEach(async ({ page }, testInfo) => {
-    console.log(`Finished ${testInfo.title} with status ${testInfo.status}`);
+    logger.info(`Finished ${testInfo.title} with status ${testInfo.status}`);
 
-    if (testInfo.status !== testInfo.expectedStatus) console.log(`Did not run as expected, ended up at ${page.url()}`);
+    if (testInfo.status !== testInfo.expectedStatus) logger.info(`Did not run as expected, ended up at ${page.url()}`);
 
     await page.close();
   });
@@ -128,7 +129,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     expect(response.ok()).toBeTruthy();
     expect(response.status()).toBe(200);
     const responseBody: CreateAccountBodyApiModel = await response.json();
-    console.log(responseBody);
+    logger.info(responseBody);
     apiResponse.checkResponseCode(responseBody, 201);
     apiResponse.checkResponseMessage(responseBody, 'User created!');
 
@@ -831,7 +832,6 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     await header.openCartPage();
     const cartProductNumber = await cart.rowForProduct.count();
     expect(cartProductNumber).toBe(foundProducts);
-    // console.log('Are the values is correct: ', cartProductNumber === foundProducts);
     // 10. Click 'Signup / Login' button and submit login details
     await header.openSignupLoginPage();
     await login.loginToAccount(userLoginData);
@@ -841,7 +841,6 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     const cartProductNumberAfterLogin = await cart.rowForProduct.count();
     //Assert
     expect(cartProductNumberAfterLogin).toBe(foundProducts);
-    // console.log('Are the values is correct: ', cartProductNumberAfterLogin === foundProducts);
 
     // Test Case 20: Search Products and Verify Cart After Login
     // 1. Launch browser

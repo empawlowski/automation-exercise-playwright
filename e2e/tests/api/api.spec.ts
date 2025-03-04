@@ -1,6 +1,7 @@
 import { Configuration } from '@_e2e/config/configuration';
 import { createAccountApi, updateAccountApi } from '@_e2e/factories/api/authentication/create-account.factory';
 import { expect, test } from '@_e2e/fixtures/base.fixture';
+import { logger } from '@_e2e/helpers/logger.helper';
 import { CreateAccountApiModel, VerifyLoginFormApiModel } from '@_e2e/models/api/authentication/create-account.model';
 import { ProductApiModel, UpdateBrandListApiModel } from '@_e2e/models/api/products/products.model';
 
@@ -26,7 +27,7 @@ test.describe('APIs List for practice', () => {
     try {
       JSON.parse(await response.text());
     } catch (error) {
-      console.log('Error parsing JSON:', error, await response.text());
+      logger.info('Error parsing JSON:', error, await response.text());
     }
     //Act
     apiResponse.checkResponseStatus(response, 404);
@@ -44,7 +45,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     expect(responseBody.products).toBeTruthy();
 
@@ -77,7 +78,7 @@ test.describe('APIs List for practice', () => {
     apiResponse.checkResponseStatuses(response);
     const productId = responseBody.products[0];
     //Assert
-    console.log(productId);
+    // console.log(productId);
     apiResponse.checkProductDetails(productId, product);
 
     // API 1.1: GET Details Product
@@ -96,7 +97,7 @@ test.describe('APIs List for practice', () => {
     apiResponse.checkResponseStatuses(response);
     //Assert
     const productTypes = responseBody.products[0];
-    console.log(productTypes);
+    // console.log(productTypes);
     expect(productTypes).toMatchObject({
       id: expect.any(Number),
       name: expect.any(String),
@@ -134,7 +135,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 405);
     apiResponse.checkResponseMessage(responseBody, 'This request method is not supported.');
 
@@ -155,7 +156,7 @@ test.describe('APIs List for practice', () => {
     expect(response).toBeTruthy();
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     expect(responseBody.brands).toBeTruthy();
 
@@ -175,7 +176,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 405);
     apiResponse.checkResponseMessage(responseBody, 'This request method is not supported.');
 
@@ -200,7 +201,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     expect(responseBody.products).toBeTruthy();
 
@@ -220,7 +221,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Arrange
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 400);
     apiResponse.checkResponseMessage(responseBody, 'Bad request, search_product parameter is missing in POST request.');
 
@@ -241,7 +242,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Arrange
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     apiResponse.checkResponseMessage(responseBody, 'User exists!');
 
@@ -263,7 +264,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 400);
     apiResponse.checkResponseMessage(responseBody, 'Bad request, email or password parameter is missing in POST request.');
 
@@ -283,7 +284,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 405);
     apiResponse.checkResponseMessage(responseBody, 'This request method is not supported.');
 
@@ -311,7 +312,7 @@ test.describe('APIs List for practice', () => {
     apiResponse.checkResponseStatuses(response);
 
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 404);
     apiResponse.checkResponseMessage(responseBody, 'User not found!');
 
@@ -334,7 +335,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 201);
     apiResponse.checkResponseMessage(responseBody, 'User created!');
 
@@ -357,7 +358,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 400);
     apiResponse.checkResponseMessage(responseBody, 'Email already exists!');
 
@@ -381,7 +382,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     apiResponse.checkResponseMessage(responseBody, 'Account deleted!');
 
@@ -407,7 +408,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     apiResponse.checkResponseMessage(responseBody, 'User updated!');
 
@@ -430,7 +431,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 404);
     apiResponse.checkResponseMessage(responseBody, 'Account not found!');
 
@@ -460,7 +461,7 @@ test.describe('APIs List for practice', () => {
     //Act
     apiResponse.checkResponseStatuses(response);
     //Assert
-    console.log(responseBody);
+    // console.log(responseBody);
     apiResponse.checkResponseCode(responseBody, 200);
     expect(responseBody.user).toBeTruthy();
     expect(responseBody.user.email).toBe(email);

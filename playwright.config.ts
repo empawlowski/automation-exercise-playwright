@@ -14,6 +14,7 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  captureGitInfo: { commit: true, diff: true },
   testDir: './e2e/tests',
   outputDir: './e2e/output/test-results',
   tsconfig: './tsconfig.json',

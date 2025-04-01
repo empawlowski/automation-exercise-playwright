@@ -60,39 +60,37 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     const userAddressInfoData: UserSignupAddressInfoModel = createSignupUserAddressInfo();
 
     //Act
-    await header.openSignupLoginPage();
-    await expect(login.headerSignup).toBeVisible();
-    // 6. Enter name and email address
-    // 7. Click 'Signup' button
-    // await login.fillUserSignup(userBaseData);
-    // 8. Verify that 'ENTER ACCOUNT INFORMATION' is visible
-    // await signup.expectAccountInformation(userBaseData);
-    // 9. Fill details: Title, Name, Email, Password, Date of birth
-    // await signup.fillBasicInformation(userBasicInfoData);
-    // 10. Select checkbox 'Sign up for our newsletter!'
-    // 11. Select checkbox 'Receive special offers from our partners!'
-    // await signup.selectNewsletterAndOffers();
-    // 12. Fill details: First name, Last name, Company, Address, Address2, Country, State, City, Zipcode, Mobile Number
-    // await signup.fillAddressInformation(userAddressInfoData);
-    // 13. Click 'Create Account button'
-    // await signup.clickCreateAccount();
-    await signup.registerUser(userBaseData, userBasicInfoData, userAddressInfoData);
-    // 14. Verify that 'ACCOUNT CREATED!' is visible
-    await expect.soft(signup.create.headerAccountCreated).toContainText('Account Created!');
-    // 15. Click 'Continue' button
-    await signup.create.clickContinue();
-    // 16. Verify that 'Logged in as username' is visible
-    await home.expectHomePage();
-    await header.expectLoggedUser(userBaseData.name);
-    // 17. Click 'Delete Account' button
-    await header.clickDeleteAccount();
-    // 18. Verify that 'ACCOUNT DELETED!' is visible and click 'Continue' button
-    await expect(signup.delete.headerAccountDeleted).toContainText('Account Deleted!');
-    await signup.delete.clickContinue();
-
+    await test.step('Part 4: Open Signup/Login page', async () => {
+      await header.openSignupLoginPage();
+    });
+    await test.step('Part 5: Verify "New User Signup!" is visible', async () => {
+      await expect(login.headerSignup).toBeVisible();
+    });
+    await test.step('Part 6-13: Create new user', async () => {
+      await signup.registerUser(userBaseData, userBasicInfoData, userAddressInfoData);
+    });
+    await test.step('Part 14: Verify that "ACCOUNT CREATED!" is visible', async () => {
+      await expect.soft(signup.create.headerAccountCreated).toContainText('Account Created!');
+    });
+    await test.step('Part 15: Click "Continue" button', async () => {
+      await signup.create.clickContinue();
+    });
+    await test.step('Part 16: Verify that "Logged in as username" is visible', async () => {
+      await home.expectHomePage();
+      await header.expectLoggedUser(userBaseData.name);
+    });
+    await test.step('Part 17: Click "Delete Account" button', async () => {
+      await header.clickDeleteAccount();
+      await expect(signup.delete.headerAccountDeleted).toContainText('Account Deleted!');
+    });
+    await test.step('Part 18: Verify that "ACCOUNT DELETED!" is visible and click "Continue" button', async () => {
+      await expect(signup.delete.headerAccountDeleted).toContainText('Account Deleted!');
+      await signup.delete.clickContinue();
+    });
     //Assert
-    // 19. Verify that home page is visible successfully
-    await home.expectHomePage();
+    await test.step('Part 19: Verify that home page is visible successfully', async () => {
+      await home.expectHomePage();
+    });
 
     // Test Case 1: Register User
     // 1. Launch browser
@@ -254,7 +252,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     await home.expectHomePage();
 
     // Test Case 6: Contact Us Form
-    // 1. Launch browser (//)
+    // 1. Launch browser
     // 2. Navigate to url 'await page.goto('https://automationexercise.com/');
     // 3. Verify that home page is visible successfully
     // 4. Click on 'Contact Us' button
@@ -296,13 +294,16 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     await header.openProductsPage();
     await products.expectProductsPage();
 
-    // 7. Click on 'View Product' of first product
-    await products.openFirstViewProduct();
+    await test.step('Part 7: Click on "View Product" of first product', async () => {
+      await products.openFirstViewProduct();
+    });
     //Assert
-    // 8. User is landed to product detail page
-    await products.details.expectProductDetailsPage();
-    // 9. Verify that detail detail is visible: product name, category, price, availability, condition, brand
-    await products.details.expectProductDetails(detailsData);
+    await test.step('Part 8: Verify that detail detail is visible', async () => {
+      await products.details.expectProductDetailsPage();
+    });
+    await test.step('Part 9: Verify product details', async () => {
+      await products.details.expectProductDetails(detailsData);
+    });
 
     // Test Case 8: Verify All Products and product detail page
     // 1. Launch browser
@@ -412,7 +413,6 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     expect(rows).toBe(2);
 
     //Assert
-    // 10. Verify their prices, quantity and total price
     await cart.expectAddedProducts(productsData);
 
     // Test Case 12: Add Products in Cart
@@ -465,47 +465,60 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     const cardData: CardInfoModel = createCardInfoForm();
 
     //Act
-    // 4. Add products to cart
-    await home.products.addProductNumberAndContinue(0);
-    // 5. Click 'Cart' button
-    await header.openCartPage();
-    // 6. Verify that cart page is displayed
-    await cart.expectCartPage();
-    // 7. Click Proceed To Checkout
-    await cart.clickProceedToCheckout();
-    // 8. Click 'Register / Login' button
-    await cart.clickRegisterLogin();
-    // 9. Fill all details in Signup and create account
-    await signup.registerUser(userBaseData, userBasicInfoData, userAddressInfoData);
-    // 10. Verify 'ACCOUNT CREATED!' and click 'Continue' button
-    await expect(signup.create.headerAccountCreated).toContainText('Account Created!');
-    await signup.create.clickContinue();
-    // 11. Verify ' Logged in as username' at top
-    await home.expectHomePage();
-    await header.expectLoggedUser(userBaseData.name);
-    // 12. Click 'Cart' button
-    await header.openCartPage();
-    // 13. Click 'Proceed To Checkout' button
-    await cart.clickProceedToCheckout();
-    // 14. Verify Address Details and Review Your Order
-    // await cart.proceedToCheckout(deliveryAddress, deliveryInvoice);
-    await checkout.checkDeliveryAddress(userAddressInfoData);
-    await checkout.checkDeliveryInvoice(userAddressInfoData);
-    // 15. Enter description in comment text area and click 'Place Order'
-    await checkout.fillDescription(description);
-    await checkout.clickPlaceOrder();
-    // 16. Enter payment details: Name on Card, Card Number, CVC, Expiration date
-    // await cart.fillCartInformation(firstName, lastName, cardNumber, cvc, expiryMonth, expiryYear);
-    await payment.fillCardInformation(cardData);
-    // 17. Click 'Pay and Confirm Order' button
-    // 18. Verify success message 'Your order has been placed successfully!'
-    await payment.clickPayAndConfirm();
-    // 19. Click 'Delete Account' button
-    await header.clickDeleteAccount();
+    await test.step('Part 4: Add products to cart', async () => {
+      await home.products.addProductNumberAndContinue(0);
+    });
+    await test.step('Part 5: Click "Cart" button', async () => {
+      await header.openCartPage();
+    });
+    await test.step('Part 6: Verify that cart page is displayed', async () => {
+      await cart.expectCartPage();
+    });
+    await test.step('Part 7: Click Proceed To Checkout', async () => {
+      await cart.clickProceedToCheckout();
+    });
+    await test.step('Part 8: Click "Register / Login" button', async () => {
+      await cart.clickRegisterLogin();
+    });
+    await test.step('Part 9: Fill all details in Signup and create account', async () => {
+      await signup.registerUser(userBaseData, userBasicInfoData, userAddressInfoData);
+    });
+    await test.step('Part 10: Verify "ACCOUNT CREATED!" and click "Continue" button', async () => {
+      await expect(signup.create.headerAccountCreated).toContainText('Account Created!');
+      await signup.create.clickContinue();
+    });
+    await test.step('Part 11: Verify "Logged in as username" at top', async () => {
+      await home.expectHomePage();
+      await header.expectLoggedUser(userBaseData.name);
+    });
+    await test.step('Part 12: Click "Cart" button', async () => {
+      await header.openCartPage();
+    });
+    await test.step('Part 13: Click "Proceed To Checkout" button', async () => {
+      await cart.clickProceedToCheckout();
+    });
+    await test.step('Part 14: Verify Address Details and Review Your Order', async () => {
+      await checkout.checkDeliveryAddress(userAddressInfoData);
+      await checkout.checkDeliveryInvoice(userAddressInfoData);
+    });
+    await test.step('Part 15: Enter description in comment text area and click "Place Order"', async () => {
+      await checkout.fillDescription(description);
+      await checkout.clickPlaceOrder();
+    });
+    await test.step('Part 16: Enter payment details', async () => {
+      await payment.fillCardInformation(cardData);
+    });
+    await test.step('Part 17-18: Click "Pay and Confirm Order" button and Verify success message "Your order has been placed successfully!"', async () => {
+      await payment.clickPayAndConfirm();
+    });
+    await test.step('Part 19: Click "Delete Account" button', async () => {
+      await header.clickDeleteAccount();
+    });
     //Assert
-    // 20. Verify 'ACCOUNT DELETED!' and click 'Continue' button
-    await expect(signup.delete.headerAccountDeleted).toContainText('Account Deleted!');
-    await signup.delete.clickContinue();
+    await test.step('Part 20: Verify "ACCOUNT DELETED!" and click "Continue" button', async () => {
+      await expect(signup.delete.headerAccountDeleted).toContainText('Account Deleted!');
+      await signup.delete.clickContinue();
+    });
 
     // Test Case 14: Place Order: Register while Checkout
     // 1. Launch browser

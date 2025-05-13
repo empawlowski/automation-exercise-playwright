@@ -239,14 +239,14 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
 
     //Act
     await header.openContactUsPage();
-    await expect.soft(contactUs.header).toBeVisible();
+    await contactUs.isHeaderVisible();
     await contactUs.fillContactUs(contactUsFormData);
 
     await contactUs.catchDialog();
     await contactUs.buttonAcceptDialog.click();
 
-    await expect.soft(contactUs.alertMessage).toContainText(data.contactUs.alertSuccess);
-    await contactUs.buttonBackHome.click();
+    await contactUs.catchAlert(data.contactUs.alertSuccess);
+    await contactUs.clickBackHome();
 
     //Assert
     await home.expectHomePage();
@@ -348,11 +348,11 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
 
     //Act
     await home.scrollDownPage();
-    await expect(home.footer.headerSubscription).toBeVisible();
+    await home.footer.isHeaderSubscriptionVisible();
     await home.footer.sendSubscribe(emailData.email);
 
     //Assert
-    await expect(home.footer.alertSuccessSubs).toContainText(data.footer.confirmationSubscribe);
+    await home.footer.catchAlert(data.footer.confirmationSubscribe);
 
     // Test Case 10: Verify Subscription in home page
     // 1. Launch browser
@@ -371,11 +371,11 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
     await header.openCartPage();
     await cart.expectCartPage();
     await cart.scrollDownPage();
-    await expect(footer.headerSubscription).toBeVisible();
+    await footer.isHeaderSubscriptionVisible();
     await footer.sendSubscribe(emailData.email);
 
     //Assert
-    await expect(footer.alertSuccessSubs).toContainText(data.footer.confirmationSubscribe);
+    await footer.catchAlert(data.footer.confirmationSubscribe);
 
     // Test Case 11: Verify Subscription in Cart page
     // 1. Launch browser
@@ -899,7 +899,7 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   test('Case 22: Add to cart from Recommended items', async ({ home, cart }) => {
     //Act
     await home.scrollDownPage();
-    await expect.soft(home.headerRecommendedItems).toBeVisible();
+    await home.isHeaderRecommendedItemsVisible();
     await home.addFromRecommendedItemsAndViewCart();
 
     //Assert
@@ -1052,10 +1052,10 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   test('Case 25: Verify Scroll Up using "Arrow" button and Scroll Down functionality', async ({ home }) => {
     //Act
     await home.scrollDownPage();
-    await expect(home.footer.headerSubscription).toBeInViewport();
+    await home.footer.isHeaderSubscriptionVisible();
     await home.takeScreenShot('footer');
     await home.clickScrollUpArrow();
-    await expect(home.headerFullFledged).toBeInViewport();
+    await home.isHeaderFullFledgedInViewPort();
     await home.takeScreenShot('header');
 
     //Assert
@@ -1076,10 +1076,10 @@ test.describe('Test for test cases', { tag: ['@reg'] }, () => {
   test('Case 26: Verify Scroll Up without "Arrow" button and Scroll Down functionality', async ({ home }) => {
     //Act
     await home.scrollDownPage();
-    await expect(home.footer.headerSubscription).toBeInViewport();
+    await home.footer.isHeaderSubscriptionVisible();
     await home.takeScreenShot('up-arrow');
     await home.scrollUpPage();
-    await expect(home.headerFullFledged).toBeInViewport();
+    await home.isHeaderFullFledgedInViewPort();
     await home.giveMeSmallSecond();
     await home.takeScreenShot('no-arrow');
 

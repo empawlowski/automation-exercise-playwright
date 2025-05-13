@@ -1,8 +1,14 @@
-node_modules/
+# Node
+/node_modules/
+
+# Playwright
 test-results/
 playwright-report/
 playwright/.cache/
-e2e/output/
-e2e/download/
-.env
+e2e/output/**
+e2e/download/**
 
+# .env files
+.env
+.env.*
+!.env.template

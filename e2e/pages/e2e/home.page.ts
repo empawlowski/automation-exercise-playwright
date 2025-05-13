@@ -8,9 +8,9 @@ import { ProductsPage } from '@_e2e/pages/e2e/products/product.page';
 import { type Locator, type Page, expect } from '@playwright/test';
 
 export class HomePage extends BasePage {
-  readonly headerFullFledged: Locator;
+  private readonly headerFullFledged: Locator;
   private readonly linkViewCart: Locator;
-  readonly headerRecommendedItems: Locator;
+  private readonly headerRecommendedItems: Locator;
   private readonly linkAddToCartFromRecommendedItems: Locator;
 
   readonly leftSidebar: LeftSidebarComponent;
@@ -34,6 +34,14 @@ export class HomePage extends BasePage {
   async expectHomePage(): Promise<void> {
     await expect.soft(this.page).toHaveURL('/');
     await expect(this.page).toHaveTitle(data.title.home);
+  }
+
+  async isHeaderFullFledgedInViewPort(): Promise<void> {
+    await expect(this.headerFullFledged).toBeInViewport();
+  }
+
+  async isHeaderRecommendedItemsVisible(): Promise<void> {
+    await expect(this.headerRecommendedItems).toBeVisible();
   }
 
   async addFromRecommendedItemsAndViewCart(): Promise<CartPage> {

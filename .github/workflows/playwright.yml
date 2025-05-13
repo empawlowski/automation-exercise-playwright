@@ -17,13 +17,14 @@ jobs:
         run: npm ci
       - name: install Playwright browsers
         run: npx playwright install --with-deps
-      - run: echo "Hello $USER"
-        env:
-          USER: ${{ vars.USER }}
-          USER_EMAIL: ${{ vars.USER_EMAIL }}
-          USER_PASSWORD: ${{ vars.USER_PASSWORD }}
-          USER_API: ${{ vars.USER_API }}
-          USER_API_EMAIL: ${{ vars.USER_API_EMAIL }}
+      # - name: check echo
+      #   run: echo
+      #   env:
+      #     USER: ${{ vars.USER }}
+      #     USER_EMAIL: ${{ vars.USER_EMAIL }}
+      #     USER_PASSWORD: ${{ vars.USER_PASSWORD }}
+      #     USER_API: ${{ vars.USER_API }}
+      #     USER_API_EMAIL: ${{ vars.USER_API_EMAIL }}
       - name: run Playwright tests
         run: npx playwright test --grep @smoke
       - uses: actions/upload-artifact@v4

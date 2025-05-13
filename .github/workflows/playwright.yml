@@ -17,8 +17,8 @@ jobs:
         run: npm ci
       - name: install Playwright browsers
         run: npx playwright install --with-deps
-      - name: check echo variable
-        run: check echo variable
+      - name: check echo
+        run: echo
         env:
           USER: ${{ vars.USER }}
           USER_EMAIL: ${{ vars.USER_EMAIL }}
